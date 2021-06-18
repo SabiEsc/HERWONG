@@ -98,7 +98,7 @@ public class consultas_codigos extends conexion {
             i++; //iterador
             
             }
-            doc.close(); //cerramos el doc
+            doc.close(); //cerramos el 
             
             JOptionPane.showMessageDialog(null, "Codigos de Barra Generados Correctamente!");           
             Desktop.getDesktop().open(new File("codigo_barras_"+fecha+".pdf"));

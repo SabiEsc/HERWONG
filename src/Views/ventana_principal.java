@@ -1,9 +1,12 @@
 package Views;
 
 import Controllers.controlador_codigos;
+import FCMaterialLookAndFeelTheme.MaterialLookAndFeel;
+import FCMaterialLookAndFeelTheme.MaterialTheme;
 import Models.codigosBarras;
 import Models.consultas_codigos;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 
 
@@ -591,6 +594,16 @@ public class ventana_principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        try {
+            
+            MaterialTheme material = new MaterialTheme.MaterialThemeBuilder().build();
+            MaterialLookAndFeel andFeel = new MaterialLookAndFeel(material);
+            UIManager.setLookAndFeel(andFeel);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ventana_principal().setVisible(true);
