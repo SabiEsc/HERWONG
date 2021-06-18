@@ -62,12 +62,12 @@ public class consultas_codigos extends conexion {
         }
         
         try {
-            int i = 0;
+            int i = 1;
             pdf = PdfWriter.getInstance(doc, new FileOutputStream("codigobarrasnuevo.pdf"));
             doc.open();
             Barcode128 code128 = new Barcode128();
             
-            while (i < 18) {                
+            while (i <= 6) {                
                 
                 code128.setCode(resultado_codigo);
                 code128.setCodeType(Barcode128.CODE128);
@@ -76,7 +76,7 @@ public class consultas_codigos extends conexion {
                 Image img = code128.createImageWithBarcode(pdf.getDirectContent(), BaseColor.BLACK, BaseColor.BLACK);
                 img.scalePercent(250);
                 
-                Paragraph titulo = new Paragraph("XD", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.COURIER, 5));
+                Paragraph titulo = new Paragraph("XD", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.COURIER, 12));
                 float scaler = ((doc.getPageSize().getWidth() - doc.leftMargin() - doc.rightMargin() - 0 / img.getWidth()) * 60);
                 
                 
