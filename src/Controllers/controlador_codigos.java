@@ -36,9 +36,11 @@ public class controlador_codigos implements ActionListener{
     }
     
     public void LlamarCodigosBarra() {
+        Integer valor_spinner = 0;
         
         String codigo = (String) view.jComboBox_modelos.getSelectedItem();
-        modelo.generarCodigosEnPDF(codigo);
+        valor_spinner = (Integer)view.jSpinner_cantidad.getValue();
+        modelo.generarCodigosEnPDF(codigo, valor_spinner);
     } 
     
     @Override

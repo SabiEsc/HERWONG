@@ -277,6 +277,9 @@ public class ventana_principal extends javax.swing.JFrame {
 
         jLabel14.setText("IMPRIMIR CODIGOS DE BARRAS ");
 
+        jSpinner_cantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 6, 1));
+        jSpinner_cantidad.setValue(1);
+
         jLabel17.setText("CANTIDAD");
 
         jLabel18.setText("MODELO");
