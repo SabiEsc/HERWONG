@@ -11,7 +11,7 @@ public class conexion {
     //com.mysql.cj.jdbc.Driver
     String usuario = "root";
     String pass = "";
-    String db = "jdbc:mysql://localhost:3306/herrwong_db";
+    String db = "jdbc:mysql://localhost:3306/herwong_db";
     
     public Connection getConnection(){
         Connection conexion = null;

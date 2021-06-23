@@ -30,13 +30,10 @@ public class consultas_codigos extends conexion {
         
         Random r = new Random();
         PdfWriter pdf;
-        Date date = new Date();
-        DateFormat hourdateFormat = new SimpleDateFormat("HH.mm.ss dd-MM-yyyy");
-        String fecha = hourdateFormat.format(date);
     
     public ArrayList obtenerModelos(){
         ArrayList lista = new ArrayList();
-        String query = "SELECT codigo_barras, modelo FROM inventario_general";
+        String query = "SELECT codigo_barras, modelo FROM productos";
         
         try (Connection conn = getConnection();
             Statement st = conn.createStatement();
@@ -52,9 +49,13 @@ public class consultas_codigos extends conexion {
         return lista;
     }
     
-    public void generarCodigosEnPDF(String codigo, int cantidad){        
+    public void generarCodigosEnPDF(String codigo, int cantidad){   
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH.mm.ss dd-MM-yyyy");
+        String fecha = hourdateFormat.format(date);
         int codigo_aleatorio = 0;
-        String query = "SELECT codigo_barras FROM inventario_general WHERE modelo = '"+codigo+"';";
+        
+        String query = "SELECT codigo_barras FROM productos WHERE modelo = '"+codigo+"';";
         System.out.println(query);
         String resultado_codigo = "";
         
@@ -98,10 +99,9 @@ public class consultas_codigos extends conexion {
             i++; //iterador
             
             }
-            doc.close(); //cerramos el 
-            
+            doc.close(); //cerramos el documento
+            pdf.close();
             JOptionPane.showMessageDialog(null, "Codigos de Barra Generados Correctamente!");           
-            Desktop.getDesktop().open(new File("codigo_barras_"+fecha+".pdf"));
             
         } catch (DocumentException | HeadlessException | IOException ex) {
             System.out.println("Error 6164:" + ex);
