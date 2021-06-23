@@ -539,7 +539,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jComboBox_fecha" min="-2" pref="131" max="-2" attributes="0"/>
+                              <Component id="jComboBox_usuarios" min="-2" pref="131" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -574,7 +574,7 @@
                                       <Component id="jLabel8" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                                       <Component id="jComboBox_Modelo" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel10" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="jComboBox_fecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBox_usuarios" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -624,7 +624,7 @@
                 <Property name="text" type="java.lang.String" value="Desde fecha:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox_fecha">
+            <Component class="javax.swing.JComboBox" name="jComboBox_usuarios">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">

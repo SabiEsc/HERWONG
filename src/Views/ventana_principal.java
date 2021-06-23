@@ -12,10 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 
-
-
 public class ventana_principal extends javax.swing.JFrame {
-
 
     public ventana_principal() {
         initComponents();
@@ -25,7 +22,7 @@ public class ventana_principal extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH); //hacemos que la pantalla sea full screen
         
         
-        /**************************************************************************************/
+        /*************************************INICIALIZAR COMBO DE MODELO********************************************/
         consultas_codigos modelo = new consultas_codigos();
         codigosBarras codigosbarra = new codigosBarras();
         controlador_codigos controlador = new controlador_codigos(this, codigosbarra, modelo);
@@ -37,9 +34,10 @@ public class ventana_principal extends javax.swing.JFrame {
         controlador_inventario_tapicero controlador2 = new controlador_inventario_tapicero(this, modelo1, invtapicero);
         
         controlador2.Inicializar_TablaTapiceros();
+        controlador2.Inicializar_ComboModelos();
+        controlador2.Inicializar_ComboTrabajadores();
         /***************************************************************************************/
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,7 +85,7 @@ public class ventana_principal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jComboBox_Modelo = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox_fecha = new javax.swing.JComboBox<>();
+        jComboBox_usuarios = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_info = new javax.swing.JTable();
@@ -367,7 +365,7 @@ public class ventana_principal extends javax.swing.JFrame {
 
         jLabel9.setText("Desde fecha:");
 
-        jComboBox_fecha.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_usuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel10.setText("FILTRAR POR USUARIO:");
 
@@ -405,7 +403,7 @@ public class ventana_principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -434,7 +432,7 @@ public class ventana_principal extends javax.swing.JFrame {
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jComboBox_Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBox_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBox_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel9)
                                 .addComponent(jLabel23))
                             .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -667,7 +665,6 @@ public class ventana_principal extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton_aceptar;
@@ -678,8 +675,8 @@ public class ventana_principal extends javax.swing.JFrame {
     public javax.swing.JButton jButton_mostrar;
     public javax.swing.JButton jButton_salida;
     public javax.swing.JComboBox<String> jComboBox_Modelo;
-    public javax.swing.JComboBox<String> jComboBox_fecha;
     public javax.swing.JComboBox<String> jComboBox_modelos;
+    public javax.swing.JComboBox<String> jComboBox_usuarios;
     public javax.swing.JComboBox<String> jCombo_tapicero;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;

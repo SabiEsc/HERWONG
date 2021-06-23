@@ -14,6 +14,11 @@ public class codigosBarras {
         this.codigo = codigo;
     }
 
+    public codigosBarras(String modelo) { // traer unicamente los modelos
+        this.modelo = modelo;
+    }
+    
+    
     public String getModelo() {
         return modelo;
     }

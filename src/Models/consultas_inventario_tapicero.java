@@ -30,4 +30,42 @@ public class consultas_inventario_tapicero extends conexion {
         }
         return lista;
     }
+    
+    public ArrayList obtenerModelos(){
+        ArrayList lista = new ArrayList();
+        String query = "SELECT modelo FROM productos";
+        
+        try (Connection conn = getConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query)) 
+        {
+            while(rs.next()){
+            codigosBarras codigos = new codigosBarras(rs.getString("modelo"));
+            lista.add(codigos);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error 3944:" + ex);
+        }
+        return lista;
+    }
+    
+    public ArrayList obtenerEmpleados(){
+        ArrayList lista = new ArrayList();
+        String query = "SELECT nombre FROM usuarios";
+        
+        try (Connection conn = getConnection();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query)) 
+        {
+            while(rs.next()){
+            usuarios user = new usuarios(rs.getString("nombre"));
+            lista.add(user);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error 3944:" + ex);
+        }
+        return lista;
+    }
+    
+    
 }
