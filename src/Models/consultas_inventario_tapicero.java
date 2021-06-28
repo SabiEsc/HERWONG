@@ -14,7 +14,7 @@ public class consultas_inventario_tapicero extends conexion {
         ArrayList lista = new ArrayList();
         String query = "SELECT p.codigo_barras as 'Codigo Barras', p.modelo as 'Modelo', u.nombre as 'Tapicero', it.clave_fabricante as 'Clave Fabricante', it.piezas as 'Piezas', it.fecha as 'Fecha' FROM productos as p\n" +
                 "INNER JOIN inventario_tapicero as it ON p.id = it.idproductos\n" +
-"INNER JOIN usuarios as u ON u.id = it.idusuarios";
+                "INNER JOIN usuarios as u ON u.id = it.idusuarios";
         
         try (Connection conn = getConnection();
             Statement st = conn.createStatement();

@@ -22,6 +22,7 @@ public class controlador_codigos implements ActionListener{
         this.codigos = codigos;
         this.modelo = modelo;
         view.jButton_descargar.addActionListener(this);
+        
     }
     
     public void inicializarCombo_modelos() {

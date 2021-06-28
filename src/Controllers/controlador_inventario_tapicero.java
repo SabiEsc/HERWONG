@@ -32,6 +32,11 @@ public class controlador_inventario_tapicero implements ActionListener{
     ArrayList NombresModelos = new ArrayList();
     ArrayList trabajadores = new ArrayList();
 
+    public controlador_inventario_tapicero() {
+    }
+    
+    
+
     public controlador_inventario_tapicero(ventana_principal vista, consultas_inventario_tapicero modelo, inventarioTapicero it) {
         this.vista = vista;
         this.modelo = modelo;

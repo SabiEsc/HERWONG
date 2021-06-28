@@ -10,9 +10,8 @@ public class inventarioTapicero {
     public String clave_fabricante;
     public String piezas;
     public String fecha;
-
-    public inventarioTapicero() {
-    }
+    public int idproductos;
+    public int idusuarios;
 
     public inventarioTapicero(String codigoBarras, String modelo, String nombre_tapicero, String clave_fabricante, String piezas, String fecha) {
         this.codigoBarras = codigoBarras;
@@ -22,6 +21,14 @@ public class inventarioTapicero {
         this.piezas = piezas;
         this.fecha = fecha;
     }
+    
+    public inventarioTapicero(int idproducto, int idusuario, String clavefabricante, String piezas){
+        this.idproductos = idproducto;
+        this.idusuarios = idusuario;
+        this.clave_fabricante = clavefabricante;
+        this.piezas = piezas;
+    }
+    
     
     public String getCodigoBarras() {
         return codigoBarras;
@@ -69,6 +76,25 @@ public class inventarioTapicero {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public int getIdproductos() {
+        return idproductos;
+    }
+
+    public void setIdproductos(int idproductos) {
+        this.idproductos = idproductos;
+    }
+
+    public int getIdusuarios() {
+        return idusuarios;
+    }
+
+    public void setIdusuarios(int idusuarios) {
+        this.idusuarios = idusuarios;
+    }
+    
+    public inventarioTapicero() {
     }
     
 }
