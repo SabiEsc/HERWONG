@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class controlador_inventario_tapicero implements ActionListener{
@@ -38,12 +39,14 @@ public class controlador_inventario_tapicero implements ActionListener{
         //inicializar algunas otras cosas
         Calendar cal = new GregorianCalendar();
         vista.jButton_mostrar.addActionListener(this);
+        vista.jButton_resetear.addActionListener(this);
         vista.fecha1.setCalendar(cal);
         vista.fecha2.setCalendar(cal);
     }
     /******************************************************************************************************************/
     public void Inicializar_TablaTapiceros() {
         tmodel = (DefaultTableModel) vista.jTable_info.getModel();
+        tmodel.setRowCount(0);
         invtapiceros = modelo.tabla_tapiceros();
         Iterator i = invtapiceros.iterator();
         
@@ -78,27 +81,53 @@ public class controlador_inventario_tapicero implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        DateFormat fmt1 = new SimpleDateFormat("yyyy-MM-dd"); //objeto para convertir fecha
-        DateFormat fmt2 = new SimpleDateFormat("yyyy-MM-dd"); //objeto para convertir fecha
+        if (e.getSource() == vista.jButton_mostrar) {
+            DateFormat fmt1 = new SimpleDateFormat("yyyy-MM-dd"); //objeto para convertir fecha
+            DateFormat fmt2 = new SimpleDateFormat("yyyy-MM-dd"); //objeto para convertir fecha
+
+            Date fecha1 = vista.fecha1.getDate();
+            Date fecha2 = vista.fecha2.getDate();
+            String usuario = vista.jComboBox_usuarios.getSelectedItem().toString();
+            String modelos = vista.jComboBox_Modelo.getSelectedItem().toString();
         
-        Date fecha1 = vista.fecha1.getDate();
-        Date fecha2 = vista.fecha2.getDate();
-        String usuario = vista.jComboBox_usuarios.getSelectedItem().toString();
-        String modelos = vista.jComboBox_Modelo.getSelectedItem().toString();
-        
-        if (modelos.equals(" -- VER TODOS -- ")) {
-            
-            tmodel = (DefaultTableModel) vista.jTable_info.getModel();
-            tmodel.setRowCount(0);
-            invtapiceros = modelo.Consulta_Tabla1(usuario, fmt1.format(fecha1), fmt1.format(fecha2));
-            Iterator i = invtapiceros.iterator();
-            System.out.println("XD");
-        
-            while (i.hasNext()) {            
-                inventarioTapicero it = (inventarioTapicero) i.next();
-                tmodel.addRow(new String[]{it.getCodigoBarras(), it.getModelo(), it.getNombre_tapicero(), it.getClave_fabricante(), it.getPiezas(), it.getFecha()});
-                System.out.println("XDX");
+            if (modelos.equals(" -- VER TODOS -- ")) {
+
+                tmodel = (DefaultTableModel) vista.jTable_info.getModel();
+                tmodel.setRowCount(0);
+                invtapiceros = modelo.Consulta_Tabla1(usuario, fmt1.format(fecha1), fmt1.format(fecha2));
+                
+                if (invtapiceros.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "No existen registros en la Base de Datos");
+                } else {
+                Iterator i = invtapiceros.iterator();
+                
+
+                while (i.hasNext()) {            
+                    inventarioTapicero it = (inventarioTapicero) i.next();
+                    tmodel.addRow(new String[]{it.getCodigoBarras(), it.getModelo(), it.getNombre_tapicero(), it.getClave_fabricante(), it.getPiezas(), it.getFecha()});
+                    
+                    }
+                }
+            } else {
+                tmodel = (DefaultTableModel) vista.jTable_info.getModel();
+                tmodel.setRowCount(0);
+                invtapiceros = modelo.Consulta_Tabla2(modelos, usuario, fmt1.format(fecha1), fmt1.format(fecha2));
+                
+                if (invtapiceros.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "No existen registros en la Base de Datos");
+                } else {
+                Iterator i = invtapiceros.iterator();
+                
+
+                while (i.hasNext()) {            
+                    inventarioTapicero it = (inventarioTapicero) i.next();
+                    tmodel.addRow(new String[]{it.getCodigoBarras(), it.getModelo(), it.getNombre_tapicero(), it.getClave_fabricante(), it.getPiezas(), it.getFecha()});
+                    
+                    }
+                }
             }
+        } else if( e.getSource() == vista.jButton_resetear) {
+                Inicializar_TablaTapiceros();
         }
     }
     /********************************************************************************************************************/
